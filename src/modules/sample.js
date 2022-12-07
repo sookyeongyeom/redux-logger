@@ -5,11 +5,11 @@ import createRequestThunk from '../utils/createRequestThunk';
 // 하나의 요청 당 세개의 액션
 const GET_POST = 'sample/GET_POST';
 const GET_POST_SUCCESS = 'sample/GET_POST_SUCCESS';
-const GET_POST_FAILURE = 'sample/GET_POST_FAILURE';
+// const GET_POST_FAILURE = 'sample/GET_POST_FAILURE';
 
 const GET_USERS = 'sample/GET_USERS';
 const GET_USERS_SUCCESS = 'sample/GET_USERS_SUCCESS';
-const GET_USERS_FAILURE = 'sample/GET_USERS_FAILURE';
+// const GET_USERS_FAILURE = 'sample/GET_USERS_FAILURE';
 
 // thunk 함수
 // 시작했을 때, 성공했을 때, 실패했을 때 다른 액션을 디스패치함
@@ -53,59 +53,19 @@ export const getUsers = createRequestThunk(GET_USERS, api.getUsers);
 
 // 초기 상태
 const initialState = {
-	loading: {
-		GET_POST: false,
-		GET_USERS: false,
-	},
 	post: null,
 	users: null,
 };
 
 const sample = handleActions(
 	{
-		[GET_POST]: (state) => ({
-			...state,
-			loading: {
-				...state.loading,
-				GET_POST: true, // 요청 시작
-			},
-		}),
 		[GET_POST_SUCCESS]: (state, action) => ({
 			...state,
-			loading: {
-				...state.loading,
-				GET_POST: false, // 요청 완료
-			},
 			post: action.payload,
-		}),
-		[GET_POST_FAILURE]: (state) => ({
-			...state,
-			loading: {
-				...state.loading,
-				GET_POST: false,
-			},
-		}),
-		[GET_USERS]: (state) => ({
-			...state,
-			loading: {
-				...state.loading,
-				GET_USERS: true, // 요청 시작
-			},
 		}),
 		[GET_USERS_SUCCESS]: (state, actions) => ({
 			...state,
-			loading: {
-				...state.loading,
-				GET_USERS: false, // 요청 완료
-			},
 			users: actions.payload,
-		}),
-		[GET_USERS_FAILURE]: (state) => ({
-			...state,
-			loading: {
-				...state.loading,
-				GET_USERS: false,
-			},
 		}),
 	},
 	initialState,
