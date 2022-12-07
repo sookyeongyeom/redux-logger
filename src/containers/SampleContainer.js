@@ -4,11 +4,13 @@ import { getPost, getUsers } from '../modules/sample';
 import Sample from '../components/Sample';
 
 const SampleContainer = () => {
-	const { post, users, loadingPost, loadingUsers } = useSelector(({ sample }) => ({
+	const { post, users } = useSelector(({ sample }) => ({
 		post: sample.post,
 		users: sample.users,
-		loadingPost: sample.loading.GET_POST,
-		loadingUsers: sample.loading.GET_USERS,
+	}));
+	const { loadingPost, loadingUsers } = useSelector(({ loading }) => ({
+		loadingPost: loading['sample/GET_POST'],
+		loadingUsers: loading['sample/GET_USERS'],
 	}));
 	const dispatch = useDispatch();
 	const getPostDsp = useCallback((id) => dispatch(getPost(id)), [dispatch]);
