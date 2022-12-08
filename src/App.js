@@ -2,7 +2,12 @@ import CounterContainer from './containers/CounterContainer';
 import SampleContainer from './containers/SampleContainer';
 
 function App() {
-	return <SampleContainer />;
+	return (
+		<>
+			<SampleContainer />
+			<CounterContainer />
+		</>
+	);
 }
 
 export default App;
